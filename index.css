@@ -1,0 +1,293 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: #172b3d;
+  background: #eff4f8;
+
+  --surface: #fff;
+  --border: #ccd9e3;
+  --muted: #4b6071;
+  --accent: #00665c;
+  --accent-light: #e9f5f2;
+  --danger: #a12c2c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+main {
+  max-width: 68rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 5vw, 3rem);
+}
+
+header {
+  margin-bottom: 1.25rem;
+  padding: clamp(1.15rem, 4vw, 2rem);
+  border-radius: 1.15rem;
+  background: #123044;
+  color: #fff;
+}
+
+.brand {
+  margin: 0;
+  color: #a7e6d6;
+  font-size: .8rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+}
+
+h1 {
+  margin: .35rem 0 .5rem;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.12;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 3vw, 1.65rem);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+#summary {
+  margin: 0;
+  color: #e0edf3;
+}
+
+.card {
+  margin-bottom: 1rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+  border: 1px solid var(--border);
+  border-radius: 1.15rem;
+  background: var(--surface);
+  box-shadow: 0 4px 16px rgb(18 48 68 / 6%);
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 700;
+}
+
+.search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+
+input,
+button {
+  min-height: 48px;
+  padding: .65rem .85rem;
+  border: 1px solid var(--border);
+  border-radius: .65rem;
+  font: inherit;
+}
+
+#document {
+  flex: 1 1 15rem;
+  width: 100%;
+  min-width: 0;
+  border-color: #889eae;
+  background: var(--surface);
+  color: inherit;
+  font-size: 1rem;
+}
+
+#document::placeholder {
+  color: var(--muted);
+}
+
+#document:disabled {
+  background: #edf2f6;
+}
+
+button {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  button:hover {
+    background: #d8ede7;
+    border-color: var(--accent);
+  }
+}
+
+:focus-visible {
+  outline: 3px solid #087c71;
+  outline-offset: 3px;
+}
+
+.muted,
+#result-summary {
+  color: var(--muted);
+}
+
+#hint,
+#status,
+#result-summary {
+  margin: .75rem 0 0;
+}
+
+#load-errors {
+  margin: 0 0 .9rem;
+  padding: .75rem;
+  border-radius: .65rem;
+  background: #fff0f0;
+  color: var(--danger);
+  overflow-wrap: anywhere;
+}
+
+#load-errors:empty,
+#status:empty,
+#suggestions:empty {
+  display: none;
+}
+
+#suggestions {
+  display: grid;
+  gap: .5rem;
+  margin: .75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#suggestions button {
+  width: 100%;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.table-wrap {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+caption {
+  padding-bottom: .6rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+th,
+td {
+  padding: .8rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+th {
+  background: #edf3f7;
+}
+
+th:last-child,
+td:last-child {
+  text-align: center;
+}
+
+td:last-child {
+  color: var(--accent);
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: .75rem;
+  }
+
+  header,
+  .card {
+    border-radius: .9rem;
+  }
+
+  .search-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .search-row button {
+    width: 100%;
+  }
+
+  .table-wrap {
+    overflow: visible;
+  }
+
+  table,
+  caption,
+  tbody,
+  tbody tr {
+    display: block;
+  }
+
+  /* Oculta los encabezados visualmente y los conserva para lectores de pantalla. */
+  thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    margin-bottom: .65rem;
+    padding: .3rem .75rem;
+    border: 1px solid var(--border);
+    border-radius: .75rem;
+    background: #f8fbfd;
+  }
+
+  tbody td {
+    display: block;
+    padding: .55rem 0;
+    text-align: left;
+  }
+
+  tbody td:last-child {
+    border-bottom: 0;
+    text-align: left;
+  }
+
+  tbody td::before {
+    display: block;
+    margin-bottom: .15rem;
+    color: var(--muted);
+    font-size: .8rem;
+    font-weight: 700;
+  }
+
+  tbody td:nth-child(1)::before {
+    content: "Archivo Excel";
+  }
+
+  tbody td:nth-child(2)::before {
+    content: "Apellidos y nombres";
+  }
+
+  tbody td:nth-child(3)::before {
+    content: "N° correlativo";
+  }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buscador de personal | AA-BUSCADOR</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="brand">AA-BUSCADOR</p>
+      <h1>Buscador de personal</h1>
+      <p id="summary" role="status">Preparando el buscador…</p>
+    </header>
+
+    <section class="card" aria-label="Consulta de personal">
+      <div hidden>
+        <input id="excel-folder" type="file" webkitdirectory multiple>
+      </div>
+      <p id="load-errors" role="alert"></p>
+
+      <form id="search" autocomplete="off">
+        <label for="document">DNI, CE, nombres o apellidos</label>
+        <div class="search-row">
+          <input
+            id="document"
+            type="text"
+            placeholder="Ej. 0123 o García Pérez"
+            aria-describedby="hint"
+            disabled
+          >
+          <button type="reset">Limpiar</button>
+        </div>
+      </form>
+
+      
+      <p id="status" role="status"></p>
+      <ul id="suggestions" aria-label="Sugerencias"></ul>
+    </section>
+
+    <section id="result" class="card" aria-labelledby="result-title" hidden>
+      <h2 id="result-title" tabindex="-1"></h2>
+      <p id="result-summary"></p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Registros encontrados en Excel</caption>
+          <thead>
+            <tr>
+              <th scope="col">Archivo Excel</th>
+              <th scope="col">Apellidos y nombres</th>
+              <th scope="col">N° correlativo</th>
+            </tr>
+          </thead>
+          <tbody id="matches"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
